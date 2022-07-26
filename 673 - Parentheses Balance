@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+#define  input cin>>
+#define  print cout<<
+#define FIO ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define FIO2 ios_base::sync_with_stdio(false);cout.tie(NULL);
+
+using namespace  std;
+
+int main() {
+    FIO
+
+    int n;input n;
+
+    string s;
+    getline(cin,s,'\n');
+    while (n--) {
+        bool t = true;
+        stack<char> st;
+        string str;
+        getline(cin,str,'\n');
+        for (char & g : str) {
+            if (g == '(' || g == '[') {st.push(g);}
+            else if  ( !st.empty()  && ( (st.top()=='[' && g==']') || (st.top()=='(' && g==')') )){
+                if(!st.empty()) st.pop();
+
+            }
+            else {
+                t = false;
+                break;
+            }
+        }
+
+        if (st.empty() && t) print "Yes\n";
+        else  print "No\n";
+    }
+
+
+    return  0;
+}
+
+
+
