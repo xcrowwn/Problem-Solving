@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+#define  input cin>>
+#define  print cout<<
+#define FIO ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define FIO2 ios_base::sync_with_stdio(false);cout.tie(NULL);
+using namespace  std;
+const long  long int N = 1e6;
+string  arr[N];
+
+set<string>mp;
+void line_p(const string& x) {
+
+    string wrd;
+    for (int a =0 ; a<x.size();a++) {
+        if (x[a] == 32 || x[a] == '\n') {
+            mp.insert(wrd);
+            wrd="";
+        }
+        else if (x[a] >= 97 && x[a] <= 122)wrd += x[a];
+
+        else if (x[a] >= 65 && x[a] <= 90) {
+            wrd += (char) (x[a] + 32);
+        }
+
+    }
+
+}
+int main() {
+    FIO
+    FIO2
+    string line;
+    string in;
+//    string in="Adventures in Disneyland\n"
+//              "Two blondes were going to Disneyland when they came to a fork in the\n"
+//              "road. The sign read: \"Disneyland Left.\"\n"
+//              "So they went home.";
+
+
+
+  while(getline(cin ,line)){
+      if(line=="0")break;
+     in+=line;
+  }
+line_p(in);
+    int i=1;
+    for(auto  a : mp){
+        if(i==mp.size())print a;
+        else print a<<endl;
+
+        i++;
+    }
+
+    }
