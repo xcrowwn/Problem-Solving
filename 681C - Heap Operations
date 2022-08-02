@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+#define  input cin>>
+#define  print cout<<
+#define FIO ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define FIO2 ios_base::sync_with_stdio(false);cout.tie(NULL);
+using namespace  std;
+const long  long int N = 1e6;
+priority_queue<int,vector<int>,greater<int>> st;
+vector<string> v;
+int main() {
+    FIO
+    FIO2
+int n;input n;
+    while (n--){
+        string s; int o;
+        input s ;
+        if(s=="insert"){
+            input o;
+            st.push(o);
+         v.push_back("insert "+ to_string(o));
+        }
+
+        else if (s=="removeMin"){
+            if (st.empty()){
+                st.push(0);
+                st.pop();
+                v.push_back("insert "+ to_string(0));
+                v.push_back("removeMin");
+            }
+
+            else{
+            st.pop();
+            v.push_back("removeMin");
+            }
+        }
+
+        else if(s=="getMin"){
+            input o;
+            if(st.empty()){
+                st.push(o);
+                v.push_back("insert " + to_string(o));
+                v.push_back("getMin " + to_string(o));
+            }
+            else if(st.top()<o){
+                while (1){
+                    if (st.top()>o|| st.empty()) {
+                    st.push(o);
+                    v.push_back("insert " + to_string(o));
+                    v.push_back("getMin " + to_string(o));
+                        break;
+                    }
+
+                    if (st.top()==o|| st.empty()) {
+                        v.push_back("getMin " + to_string(o));
+                        break;
+                    }
+
+                    st.pop();
+                    v.push_back("removeMin");
+
+                    }
+
+            }
+            else if (st.top()>o){
+                    st.push(o);
+                    v.push_back("insert " + to_string(o));
+                    v.push_back("getMin " + to_string(o));
+            }
+            else v.push_back("getMin " + to_string(st.top()));
+        }
+
+    }
+        print v.size()<<endl;
+        for( auto a : v){
+            print a <<endl;
+        }
+
+}
